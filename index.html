@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旋转图形</title>
+<style>
+  /* 设置页面容器的大小为图片大小 */
+  .background-container {
+    width: 600px;
+    height: 880px;
+    margin: 0 auto; /* 居中显示 */
+    background-image: url('1.jpg');
+    background-size: 100% 100%; /* 完全适应容器 */
+    position: relative;
+  }
+
+  /* 圆形样式及位置 */
+  .circle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    top: 720px; /* 根据需要调整的垂直位置 */
+    left: 113px; /* 根据需要调整的水平位置 */
+    transform-origin: center;
+    transition: transform 0.5s;
+  }
+
+  /* 正方形样式及位置 */
+  .square {
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    background-color: rgba(0, 255, 0, 0.5);
+    top: 720px; /* 根据需要调整的垂直位置 */
+    left: 250px; /* 根据需要调整的水平位置 */
+    transform-origin: center;
+    transition: transform 0.5s;
+  }
+
+  /* 三角形样式及位置 */
+.triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 45px solid transparent;  /* 增加宽度 */
+    border-right: 45px solid transparent; /* 增加宽度 */
+    border-bottom: 76px solid rgba(0, 0, 255, 0.5); /* 增加高度 */
+    top: 715px;
+    left: 384px;
+    transform: translate(0px, 0px); /* 偏移中心位置 */
+    transform-origin: center;
+    transition: transform 0.5s;
+}
+
+</style>
+</head>
+<body>
+
+<div class="background-container">
+  <div class="circle" id="circle"></div>
+  <div class="square" id="square"></div>
+  <div class="triangle" id="triangle"></div>
+</div>
+
+<script>
+  let rotationAngle = 0;
+
+  // 定义旋转函数
+  function rotateShapes() {
+    rotationAngle += 45;  // 每次旋转45度
+    document.getElementById('circle').style.transform = `rotate(${rotationAngle}deg)`;
+    document.getElementById('square').style.transform = `rotate(${rotationAngle}deg)`;
+    document.getElementById('triangle').style.transform = `rotate(${rotationAngle}deg)`;
+  }
+
+  // 监听点击事件，点击页面旋转图形
+  document.addEventListener('click', rotateShapes);
+</script>
+
+</body>
+</html>
