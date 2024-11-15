@@ -80,6 +80,30 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 给文字添加阴影 */
   }
 
+  /* 滑动条样式 */
+  .slider-container {
+    position: absolute;
+    top: 850px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+  }
+
+  .slider {
+    width: 100%;
+  }
+
+  /* 角度显示样式 */
+  .angle-display {
+    position: absolute;
+    top: 820px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+  }
+
 </style>
 </head>
 <body>
@@ -90,25 +114,39 @@
   <div class="triangle" id="triangle"></div>
 
   <!-- 文字说明 -->
-
   <div class="author">作者：德胜小学邓羽乔</div>
+  <div class="instruction">使用滑动条控制图形旋转</div>
 
-  <div class="instruction">点击页面旋转图形</div>
+  <!-- 角度显示 -->
+  <div class="angle-display" id="angleDisplay">角度: 0°</div>
+
+  <!-- 滑动条控制 -->
+  <div class="slider-container">
+    <input type="range" class="slider" id="rotationSlider" min="0" max="360" value="0">
+  </div>
 </div>
 
 <script>
-  let rotationAngle = 0;
+  const rotationSlider = document.getElementById('rotationSlider');
+  const angleDisplay = document.getElementById('angleDisplay');
 
-  // 定义旋转函数
-  function rotateShapes() {
-    rotationAngle += 45;  // 每次旋转45度
-    document.getElementById('circle').style.transform = `rotate(${rotationAngle}deg)`;
-    document.getElementById('square').style.transform = `rotate(${rotationAngle}deg)`;
-    document.getElementById('triangle').style.transform = `rotate(${rotationAngle}deg)`;
+  // 更新图形旋转角度
+  function updateRotation(angle) {
+    document.getElementById('circle').style.transform = `rotate(${angle}deg)`;
+    document.getElementById('square').style.transform = `rotate(${angle}deg)`;
+    document.getElementById('triangle').style.transform = `rotate(${angle}deg)`;
+    angleDisplay.innerHTML = `角度: ${angle}°`;
   }
 
-  // 监听点击事件，点击页面旋转图形
-  document.addEventListener('click', rotateShapes);
+  // 监听滑动条变化
+  rotationSlider.addEventListener('input', function() {
+    const angle = rotationSlider.value;
+    updateRotation(angle);
+  });
+
+  // 初始化时设置图形角度
+  updateRotation(0);
+
 </script>
 
 </body>
