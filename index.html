@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>旋转图形</title>
 <style>
+
   /* 设置页面容器的大小为图片大小 */
   .background-container {
     width: 600px;
@@ -41,7 +42,7 @@
   }
 
   /* 三角形样式及位置 */
-.triangle {
+  .triangle {
     position: absolute;
     width: 0;
     height: 0;
@@ -53,7 +54,31 @@
     transform: translate(0px, 0px); /* 偏移中心位置 */
     transform-origin: center;
     transition: transform 0.5s;
-}
+  }
+
+  /* 文字说明样式 */
+  .instruction {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 给文字添加阴影 */
+    margin-bottom: 10px; /* 增加间距 */
+  }
+
+  .author {
+    position: absolute;
+    top: 40px; /* 适当调整位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: white;
+    font-weight: normal;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 给文字添加阴影 */
+  }
 
 </style>
 </head>
@@ -63,6 +88,12 @@
   <div class="circle" id="circle"></div>
   <div class="square" id="square"></div>
   <div class="triangle" id="triangle"></div>
+
+  <!-- 文字说明 -->
+
+  <div class="author">作者：德胜小学邓羽乔</div>
+
+  <div class="instruction">点击页面旋转图形</div>
 </div>
 
 <script>
